@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShidoLend - Préstamos descentralizados</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f8f9fa;
+    }
+    h1 {
+      color: #5c67f2;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #5c67f2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenido a ShidoLend</h1>
+  <p>Plataforma de préstamos sobre la red Shido</p>
+  <button onclick="connectWallet()">Conectar Wallet</button>
+
+  <script>
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          alert("Wallet conectada: " + accounts[0]);
+        } catch (err) {
+          alert("Error al conectar wallet: " + err.message);
+        }
+      } else {
+        alert("No se detectó una wallet. Instala MetaMask.");
+      }
+    }
+  </script>
+</body>
+</html>
